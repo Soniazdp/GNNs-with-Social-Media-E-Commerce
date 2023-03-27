@@ -6,17 +6,17 @@ This project aims to take full advantage of social media posts about products, f
 
 ## Usage
 ### Data Acquisition & Processing with Python
-Using `test.py` and `process_raw.py` in the `data` folder, the ApifyClient API can be accessed with a proper token where a specific number of posts with the desired hashtag will be scraped. Note that due to the limitation of free trials, some manual work on data balancing may be needed. That is, if there are hashtags with not enough posts scraped which can be checked by `process_raw.py`, they need to be fed to the API again such that all hashtags have the same amount of information acquired. 
+Using `data/test.py` and `data/process_raw.py`, the ApifyClient API can be accessed with a proper token where a specific number of posts with the desired hashtag will be scraped. Note that due to the limitation of free trials, some manual work on data balancing may be needed. That is, if there are hashtags with not enough posts scraped which can be checked by `process_raw.py`, they need to be fed to the API again such that all hashtags have the same amount of information acquired. 
 
-Then, `json_csv.py` should be applied to clean up post information and export the top 3 popular hashtag for later use. If more hashtags are interested, line 19 can be modified accordingly. The outputs from this script are ready to pass down to the R scripts.
+Then, `data/json_csv.py` should be applied to clean up post information and export the top 3 popular hashtag for later use. If more hashtags are interested, line 19 can be modified accordingly. The outputs from this script are ready to pass down to the R scripts.
 
 ### Graph Creation with R
-`hashExtractor.R` scans through all the post texts and extracts related hashtags by tokenizing them. It also captures the frequency of each hashtag for later usage and organizes the hashtags with their frequency in .csv format. Note that hashtags with degree lower than 80 are filtered out for the purpose of data cleaning. Then, Stage 1 of the entire process is finished.
+`data/hashExtractor.R` scans through all the post texts and extracts related hashtags by tokenizing them. It also captures the frequency of each hashtag for later usage and organizes the hashtags with their frequency in .csv format. Note that hashtags with degree lower than 80 are filtered out for the purpose of data cleaning. Then, Stage 1 of the entire process is finished.
 
-`graphCreator.R` reads from the .csv file generated from the previous script and generates an edge matrix. Then it calculates the degree of each hashtag (i.e number of connections to other hashtags). To improve the link prediction of the hashtags that have a lower frequency, the ones with a lower degree will be more focused.
+`data/graphCreator.R` reads from the .csv file generated from the previous script and generates an edge matrix. Then it calculates the degree of each hashtag (i.e number of connections to other hashtags). To improve the link prediction of the hashtags that have a lower frequency, the ones with a lower degree will be more focused.
 
 ### Model Training
-The Graph Neural Network (GNN) model can be found in the `gnn.ipynb` script with 100 epochs and a learning rate of 0.01. 
+The Graph Neural Network (GNN) model can be found in the `code/gnn.ipynb` script with 100 epochs and a learning rate of 0.01. 
 
 ## Acknowledgement
 The R scripts are provided by the open-source GitHub repository: https://github.com/JonasSchroeder/InstaCrawlR
