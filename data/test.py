@@ -2,7 +2,7 @@ from apify_client import ApifyClient
 
 def get_dataset(hashtag_list, limit=10, output_filename='output.json'):
     # Initialize the ApifyClient with API token
-    client = ApifyClient('apify_api_Xsd7C0CmU6w8zgVsbVqHzcm4971A2d0lQnYC')
+    client = ApifyClient('our_token')
     actor_collection_client = client.actors()
     actor_list = actor_collection_client.list().items
 
@@ -14,4 +14,3 @@ def get_dataset(hashtag_list, limit=10, output_filename='output.json'):
 
     dataset = client.dataset(run['defaultDatasetId'])
     dataset.download_items(limit=limit, format='json')
-    dataset
