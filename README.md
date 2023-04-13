@@ -1,4 +1,4 @@
-# HybridRecommender
+# GNNs with Social Media E-Commerce
 
 Social media has become an increasingly essential tool for e-commerce brands, where they can understand relationships between different products, develop products catering to new trends, and eventually gain a competitive advantage in the market. Traditionally, companies rely on the experience and intuition of industrial analysts or influencers for trend prediction. While these methods may be effective, their performance in trend identification is poorer than data-driven methods using statistical models or machine learning.
 
