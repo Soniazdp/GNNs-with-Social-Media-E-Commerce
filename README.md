@@ -6,9 +6,9 @@ This project aims to take full advantage of social media posts about products, f
 
 ## Usage
 ### Data Acquisition & Processing with Python
-Using `data/test.py` and `data/process_raw.py`, the ApifyClient API can be accessed with a proper token where a specific number of posts with the desired hashtag will be scraped. Note that due to the limitation of free trials, some manual work on data balancing may be needed. That is, if there are hashtags with not enough posts scraped which can be checked by `process_raw.py`, they need to be fed to the API again such that all hashtags have the same amount of information acquired. 
+Using `data/process.py` and `data/scraping.py`, the ApifyClient API can be accessed with a proper token where a specific number of posts with the desired hashtag will be scraped. Note that due to the limitation of free trials, some manual work on data balancing may be needed. That is, if there are hashtags with not enough posts scraped which can be checked by `process.py`, they need to be fed to the API again such that all hashtags have the same amount of information acquired. Sample hashtags scraped from nike and mac are stored in the json file, which contains 3 levels of hashtag branching out from the brand account.
 
-Then, `data/json_csv.py` should be applied to clean up post information and export the top 3 popular hashtag for later use. If more hashtags are interested, line 19 can be modified accordingly. The outputs from this script are ready to pass down to the R scripts.
+Then, `data/json_csv.py` should be applied to clean up post information and export the level 3 hashtags for later use. The outputs from this script are ready to pass down to the R scripts.
 
 ### Graph Creation with R
 `data/hashExtractor.R` scans through all the post texts and extracts related hashtags by tokenizing them. It also captures the frequency of each hashtag for later usage and organizes the hashtags with their frequency in .csv format. Note that hashtags with degree lower than 80 are filtered out for the purpose of data cleaning. Then, Stage 1 of the entire process is finished.
