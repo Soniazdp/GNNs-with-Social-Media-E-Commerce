@@ -16,7 +16,7 @@ Then, `data/json_csv.py` should be applied to clean up post information and expo
 `data/graphCreator.R` reads from the .csv file generated from the previous script and generates an edge matrix. Then it calculates the degree of each hashtag (i.e number of connections to other hashtags). To improve the link prediction of the hashtags that have a lower frequency, the ones with a lower degree will be more focused.
 
 ### Model Training
-The Graph Neural Network (GNN) model can be found in the `code/exp_gnn.ipynb` script with 2 ConvSage layer and 30 training epochs. 
+The Graph Neural Network (GNN) model can be found in the `code/exp_gnn.ipynb` script with 2 ConvSage layers and 30 training epochs. 
 
 ## Acknowledgement
 The R scripts are provided by the open-source GitHub repository: https://github.com/JonasSchroeder/InstaCrawlR
